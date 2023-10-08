@@ -4,7 +4,6 @@ var gliders = [
             "Peach Parasol",
             "Parafoil",
             "Bowser Kite",
-            "Parafoil",
             "MKTV Parafoil"
         ],
         "speedGnd": -.25,
