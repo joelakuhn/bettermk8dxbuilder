@@ -98,12 +98,18 @@ h2 {
 
 /* BUTTON STYLES */
 
-.btn {
+button {
     font-size: inherit;
-    margin: .25em;
-    padding: .5em .25em;
     border: 1px solid #848484;
     border-radius: .625em;
+    background: #e4eaea;
+    margin: .25em;
+    padding: .25em .5em;
+}
+
+.btn {
+    margin: .25em;
+    padding: .5em .25em;
     height: var(--button_size);
 }
 .btn.selected {
@@ -199,4 +205,49 @@ h2 {
     border: 1px solid #848484;
     border-radius: 100%;
     margin-left: .375em;
+    padding: 0;
 }
+
+/* EXPLORER */
+
+.results {
+    margin-top: 2em;
+}
+
+.results img {
+    height: 2em;
+}
+
+.result {
+    display: flex;
+}
+
+.piece {
+    margin: .25em;
+    padding: .5em;
+    border: 1px solid #848484;
+    border-radius: .625em;
+    background: #e4eaea;
+}
+
+/* MODE */
+
+.mode button {
+    margin: 0;
+}
+
+.mode button.selected {
+    background-color: #b8eeb9;
+}
+
+.mode button:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.mode button:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 0;
+}
+
