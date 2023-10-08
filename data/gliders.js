@@ -1,5 +1,6 @@
 var gliders = [
     {
+        "id": "parasol",
         "items": [
             "Peach Parasol",
             "Parafoil",
@@ -21,6 +22,7 @@ var gliders = [
         "invincibility": -.25
     },
     {
+        "id": "paper",
         "items": [
             "Cloud Glider",
             "Parachute",
@@ -42,6 +44,7 @@ var gliders = [
         "invincibility": -.25
     },
     {
+        "id": "plane",
         "items": [
             "Wario Wing",
             "Plane Glider",
@@ -63,6 +66,7 @@ var gliders = [
         "invincibility": 0
     },
     {
+        "id": "super",
         "items": [
             "Super Glider",
             "Waddle Wing",

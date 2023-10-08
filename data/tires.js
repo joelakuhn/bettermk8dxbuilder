@@ -1,5 +1,6 @@
 var tires = [
     {
+        "id": "standad",
         "items": [
             "Blue Standard",
             "Standard"
@@ -19,6 +20,7 @@ var tires = [
         "invincibility": 0
     },
     {
+        "id": "monster",
         "items": [
             "Hot Monster",
             "Monster"
@@ -38,6 +40,7 @@ var tires = [
         "invincibility": 0.5
     },
     {
+        "id": "ancient",
         "items": [
             "Ancient Tires"
         ],
@@ -56,6 +59,7 @@ var tires = [
         "invincibility": 0.25
     },
     {
+        "id": "roller",
         "items": [
             "Azure Roller",
             "Roller"
@@ -75,6 +79,7 @@ var tires = [
         "invincibility": -0.75
     },
     {
+        "id": "slick",
         "items": [
             "Cyber Slick",
             "Slick"
@@ -94,6 +99,7 @@ var tires = [
         "invincibility": 0.25
     },
     {
+        "id": "metal",
         "items": [
             "Metal"
         ],
@@ -112,6 +118,7 @@ var tires = [
         "invincibility": 0.5
     },
     {
+        "id": "sponge",
         "items": [
             "Sponge"
         ],
@@ -130,6 +137,7 @@ var tires = [
         "invincibility": 0
     },
     {
+        "id": "cushion",
         "items": [
             "Cushion"
         ],
@@ -148,6 +156,7 @@ var tires = [
         "invincibility": 0.5
     },
     {
+        "id": "slim",
         "items": [
             "Crimson Slim",
             "Slim",
@@ -168,6 +177,7 @@ var tires = [
         "invincibility": 0.25
     },
     {
+        "id": "offroad",
         "items": [
             "Off-Road",
             "Retro Off-Road"
@@ -187,6 +197,7 @@ var tires = [
         "invincibility": 0.75
     },
     {
+        "id": "gold",
         "items": [
             "Gold Tires"
         ],
@@ -205,6 +216,7 @@ var tires = [
         "invincibility": 0.25
     },
     {
+        "id": "gla",
         "items": [
             "GLA Tires"
         ],
@@ -223,6 +235,7 @@ var tires = [
         "invincibility": 0.25
     },
     {
+        "id": "triforce",
         "items": [
             "Triforce Tires"
         ],
@@ -241,6 +254,7 @@ var tires = [
         "invincibility": 0.5
     },
     {
+        "id": "button",
         "items": [
             "Button",
             "Leaf Tires"

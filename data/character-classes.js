@@ -1,5 +1,6 @@
 var characters = [
   {
+    "id": "bbmario",
     "size": "light",
     "speedGnd": 2.75,
     "speedWtr": 3,
@@ -23,6 +24,7 @@ var characters = [
     ]
   },
   {
+    "id": "bbypeach",
     "size": "light",
     "speedGnd": 2.5,
     "speedWtr": 2.75,
@@ -44,6 +46,7 @@ var characters = [
     ]
   },
   {
+    "id": "koopa",
     "size": "light",
     "speedGnd": 3,
     "speedWtr": 3.25,
@@ -66,6 +69,7 @@ var characters = [
     ]
   },
   {
+    "id": "toadette",
     "size": "light",
     "speedGnd": 3,
     "speedWtr": 3.25,
@@ -88,6 +92,7 @@ var characters = [
     ]
   },
   {
+    "id": "toad",
     "size": "light",
     "speedGnd": 3.25,
     "speedWtr": 3.5,
@@ -110,6 +115,7 @@ var characters = [
     ]
   },
   {
+    "id": "catpeach",
     "size": "medium",
     "speedGnd": 3.5,
     "speedWtr": 3.75,
@@ -132,6 +138,7 @@ var characters = [
     ]
   },
   {
+    "id": "bbyrosalina",
     "size": "light",
     "speedGnd": 2.5,
     "speedWtr": 2.75,
@@ -153,6 +160,7 @@ var characters = [
     ]
   },
   {
+    "id": "yoshi",
     "size": "medium",
     "speedGnd": 3.75,
     "speedWtr": 4,
@@ -176,6 +184,7 @@ var characters = [
     ]
   },
   {
+    "id": "tanooki",
     "size": "medium",
     "speedGnd": 3.75,
     "speedWtr": 4,
@@ -198,6 +207,7 @@ var characters = [
     ]
   },
   {
+    "id": "luigi",
     "size": "medium",
     "speedGnd": 4,
     "speedWtr": 4.25,
@@ -220,6 +230,7 @@ var characters = [
     ]
   },
   {
+    "id": "mario",
     "size": "medium",
     "speedGnd": 4,
     "speedWtr": 4.25,
@@ -242,6 +253,7 @@ var characters = [
     ]
   },
   {
+    "id": "rosalina",
     "size": "heavy",
     "speedGnd": 4.25,
     "speedWtr": 4.5,
@@ -264,6 +276,7 @@ var characters = [
     ]
   },
   {
+    "id": "wiggler",
     "size": "heavy",
     "speedGnd": 4.5,
     "speedWtr": 4.75,
@@ -287,6 +300,7 @@ var characters = [
     ]
   },
   {
+    "id": "metalic",
     "size": "heavy",
     "speedGnd": 4.25,
     "speedWtr": 4.5,
@@ -308,6 +322,7 @@ var characters = [
     ]
   },
   {
+    "id": "wario",
     "size": "heavy",
     "speedGnd": 4.75,
     "speedWtr": 5,
@@ -330,6 +345,7 @@ var characters = [
     ]
   },
   {
+    "id": "petey",
     "size": "heavy",
     "speedGnd": 4.25,
     "speedWtr": 4.5,
@@ -350,6 +366,7 @@ var characters = [
     ]
   },
   {
+    "id": "bowser",
     "size": "heavy",
     "speedGnd": 4.75,
     "speedWtr": 5,

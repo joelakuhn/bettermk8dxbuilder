@@ -1,11 +1,13 @@
 var vehicles = [
     {
+        "id": "standard",
         "items": [
             "Standard Kart"
         ],
         "miniturbo": 0.25
     },
     {
+        "id": "pipefame",
         "items": [
             "Pipe Frame"
         ],
@@ -24,6 +26,7 @@ var vehicles = [
         "invincibility": -0.25
     },
     {
+        "id": "trispeeder",
         "items": [
             "Tri-Speeder",
             "Steel Driver"
@@ -43,6 +46,7 @@ var vehicles = [
         "invincibility": 0.75
     },
     {
+        "id": "prancer",
         "items": [
             "Prancer"
         ],
@@ -61,6 +65,7 @@ var vehicles = [
         "invincibility": 0.5
     },
     {
+        "id": "landship",
         "items": [
             "Landship"
         ],
@@ -79,6 +84,7 @@ var vehicles = [
         "invincibility": -0.5
     },
     {
+        "id": "sneeker",
         "items": [
             "Sneeker"
         ],
@@ -97,6 +103,7 @@ var vehicles = [
         "invincibility": 0.5
     },
     {
+        "id": "coupe",
         "items": [
             "Sports Coupe",
             "Mach 8"
@@ -116,6 +123,7 @@ var vehicles = [
         "invincibility": 0.25
     },
     {
+        "id": "goldstandard",
         "items": [
             "Gold Standard"
         ],
@@ -134,6 +142,7 @@ var vehicles = [
         "invincibility": 0.25
     },
     {
+        "id": "badwagon",
         "items": [
             "Badwagon",
             "GLA"
@@ -153,6 +162,7 @@ var vehicles = [
         "invincibility": 1
     },
     {
+        "id": "arrow",
         "items": [
             "W 25 Silver Arrow"
         ],
@@ -171,6 +181,7 @@ var vehicles = [
         "invincibility": 0
     },
     {
+        "id": "roadster",
         "items": [
             "300 SL Roadster"
         ],
@@ -189,6 +200,7 @@ var vehicles = [
         "invincibility": 0.25
     },
     {
+        "id": "falcon",
         "items": [
             "Blue Falcon"
         ],
@@ -207,6 +219,7 @@ var vehicles = [
         "invincibility": 0.25
     },
     {
+        "id": "tanooki",
         "items": [
             "Tanooki Kart"
         ],
@@ -225,6 +238,7 @@ var vehicles = [
         "invincibility": 0.25
     },
     {
+        "id": "streetle",
     	"items": [
             "Streetle"
         ],
@@ -243,6 +257,7 @@ var vehicles = [
         "invincibility": -0.25
     },
     {
+        "id": "pwing",
         "items": [
             "P-Wing",
             "B Dasher",
@@ -263,6 +278,7 @@ var vehicles = [
         "invincibility": 0.75
     },
     {
+        "id": "duke",
         "items": [
             "The Duke"
         ],
@@ -281,6 +297,7 @@ var vehicles = [
         "invincibility": 0
     },
     {
+        "id": "flamerider",
         "items": [
             "Flame Rider",
             "Standard Bike"
@@ -300,6 +317,7 @@ var vehicles = [
         "invincibility": -0.25
     },
     {
+        "id": "biddybuggy",
         "items": [
             "Biddybuggy",
             "Mr Scooty"
@@ -319,6 +337,7 @@ var vehicles = [
         "invincibility": -0.75
     },
     {
+        "id": "jet",
         "items": [
             "Jet Bike",
             "Sport Bike"
@@ -339,6 +358,7 @@ var vehicles = [
         "insideDrift": true
     },
     {
+        "id": "comet",
         "items": [
             "Comet",
             "Yoshi Bike"
@@ -359,6 +379,7 @@ var vehicles = [
         "insideDrift": true
     },
     {
+        "id": "mastercycle",
         "items": [
             "Master Cycle"
         ],
@@ -378,6 +399,7 @@ var vehicles = [
         "insideDrift": true
     },
     {
+        "id": "clown",
         "items": [
             "Koopa Clown",
             "Master Cycle Zero"
@@ -397,6 +419,7 @@ var vehicles = [
         "invincibility": 0
     },
     {
+        "id": "vamint",
         "items": [
             "City Tripper",
             "Varmint"
@@ -416,6 +439,7 @@ var vehicles = [
         "invincibility": -0.5
     },
     {
+        "id": "atv",
         "items": [
             "Standard ATV"
         ],
@@ -434,6 +458,7 @@ var vehicles = [
         "invincibility": 0.75
     },
     {
+        "id": "wiggler",
         "items": [
             "Wild Wiggler"
         ],
@@ -452,6 +477,7 @@ var vehicles = [
         "invincibility": -0.5
     },
     {
+        "id": "teddy",
         "items": [
             "Cat Cruiser",
             "Teddy Buggy"
@@ -471,6 +497,7 @@ var vehicles = [
         "invincibility": 0
     },
     {
+        "id": "rattler",
         "items": [
             "Bone Rattler"
         ],
@@ -488,7 +515,8 @@ var vehicles = [
         "miniturbo": -0.25,
         "invincibility": 0.5
     },
-    	{
+    {
+        "id": "splat",
         "items": [
             "Splat Buggy"
         ],
@@ -507,6 +535,7 @@ var vehicles = [
         "invincibility": 0
     },
     {
+        "id": "inkstriker",
         "items": [
             "Inkstriker"
         ],
