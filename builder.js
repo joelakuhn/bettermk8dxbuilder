@@ -31,6 +31,15 @@ var builder = new Vue({
         crit_val: {},
         matching: [],
     },
+    mounted() {
+        new Clipboard('.share').on('success', function(e) {
+            document.querySelector('.share-msg').className += ' shown';
+            setTimeout(function() {
+                document.querySelector('.share-msg').className = 'share-msg';
+            }, 3000);
+        });;
+        this.restore_from_hash();
+    },
     methods: {
         btn_class(obj, piece)  {
             var cls = [ 'btn',  'btn-' + obj.items.length ];
@@ -45,6 +54,7 @@ var builder = new Vue({
         select(piece, item) {
             if (this.builds[this.build_i][piece] === item) this.builds[this.build_i][piece] = null;
             else this.builds[this.build_i][piece] = item;
+            this.make_url();
         },
         select_build(build) {
             this.builds[this.build_i].character = build.character;
@@ -52,6 +62,7 @@ var builder = new Vue({
             this.builds[this.build_i].tire = build.tire;
             this.builds[this.build_i].glider = build.glider;
             this.mode = 'builder';
+            this.make_url();
         },
         select_cmp(piece, item) {
             this.cmp[piece] = item;
@@ -95,6 +106,31 @@ var builder = new Vue({
         },
         prev_build() {
             this.build_i = (this.build_i - 1 + this.builds.length) % this.builds.length;
+        },
+        make_url() {
+            return document.location.protocol + '//'
+            + document.location.hostname
+            + document.location.pathname
+            + '?' + this.builds
+            .filter((build) => build.character || build.vehicle || build.tire || build.glider)
+            .map((build) =>
+                (build.character ? build.character.id : 'any')
+                + '-' + (build.vehicle ? build.vehicle.id : 'any')
+                + '-' + (build.tire ? build.tire.id : 'any')
+                + '-' + (build.glider ? build.glider.id : 'any')
+            ).join(':');
+        },
+        restore_from_hash() {
+            var items = [ this.characters, this.vehicles, this.tires, this.gliders ];
+            const pieces = ['character', 'vehicle', 'tire', 'glider']
+            var hash_builds = document.location.search.substr(1).split(':');
+            for (var build_i = 0; build_i < hash_builds.length; build_i++) {
+                var sel = hash_builds[build_i].split('-')
+                for (var i = 0; i < 4; i++) {
+                    if (sel[i] === 'any') continue;
+                    this.builds[build_i][pieces[i]] = items[i].find((v) => v.id === sel[i]);
+                }
+            }
         },
         search() {
             var builds = [];
