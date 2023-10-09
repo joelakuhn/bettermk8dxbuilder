@@ -1,6 +1,6 @@
 var tires = [
     {
-        "id": "standad",
+        "id": "standard",
         "items": [
             "Blue Standard",
             "Standard"
