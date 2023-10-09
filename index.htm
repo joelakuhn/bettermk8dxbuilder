@@ -87,8 +87,13 @@
         </div>
         <div class="build">
             <div class="build-nav">
-                <button @click="prev_build()">&#x02c2;</button>
-                <button @click="next_build()">&#x02c3;</button>
+                <button class="prev" @click="prev_build()"></button>
+                <button class="append" @click="add_build()"><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                    <g fill-rule="nonzero" stroke="#000" stroke-width="3" fill="none" stroke-linecap="square">
+                        <path d="M2 8h12M8 2v12" />
+                    </g>
+                </svg></button>
+                <button class="next" @click="next_build()"></button>
             </div>
             <h2>Build {{ build_i + 1 }}</h2>
             <stat-bar :value="stat('miniturbo')" :cmp="cmpstat('miniturbo')" label="Miniturbo"></stat-bar>

@@ -8,7 +8,7 @@
 @media (max-width: 1339px) { :root { --button_size: 3em; } }
 @media (max-width: 1199px) { :root { --button_size: 3.5em; } }
 @media (max-width: 999px) { :root { --button_size: 3em; } }
-@media (max-width: 767px) { :root { --button_size: 2.75em; } }
+@media (max-width: 767px) { :root { --button_size: 2.625em; } }
 
 @font-face {
     font-family: 'Source Sans Pro';
@@ -206,6 +206,28 @@ button {
     border-radius: 100%;
     margin-left: .375em;
     padding: 0;
+}
+
+.build-nav .next::after {
+    content: ' ';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 10px solid #333;
+    margin-left: 3px;
+}
+
+.build-nav .prev::after {
+    content: ' ';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-right: 10px solid #333;
+    margin-right: 3px;
 }
 
 /* EXPLORER */

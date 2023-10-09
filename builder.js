@@ -120,11 +120,21 @@ var builder = new Vue({
                 + '-' + (build.glider ? build.glider.id : 'any')
             ).join(':');
         },
+        blank_build() {
+            return { character: null, vehicle: null, tire: null, glider: null };
+        },
+        add_build() {
+            this.builds.push(this.blank_build());
+            this.build_i = this.builds.length - 1;
+        },
         restore_from_hash() {
             var items = [ this.characters, this.vehicles, this.tires, this.gliders ];
             const pieces = ['character', 'vehicle', 'tire', 'glider']
             var hash_builds = document.location.search.substr(1).split(':');
             for (var build_i = 0; build_i < hash_builds.length; build_i++) {
+                if (build_i >= this.builds.length) {
+                    this.builds.push(this.blank_build());
+                }
                 var sel = hash_builds[build_i].split('-')
                 for (var i = 0; i < 4; i++) {
                     if (sel[i] === 'any') continue;
