@@ -256,6 +256,7 @@ button {
 .share {
     float: right;
     position: relative;
+    margin: 0;
 }
 
 .share-msg {
