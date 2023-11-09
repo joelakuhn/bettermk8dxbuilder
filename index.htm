@@ -14,14 +14,15 @@
 </head>
 <body>
 <main>
-<div id="builder" style="display: none;">
+<div class="intro">
     <h1>"Better" MK8DX Builder</h1>
-    <p class="intro">"Better" MKBDX Builder is a tool for comparing and discovering builds in Mario Kart 8 Deluxe.
+    <p>"Better" MKBDX Builder is a tool for comparing and discovering builds in Mario Kart 8 Deluxe.
         This tool groups pieces with the same stats to make it easier to choose the aesthetic choice
         that's right for you. If you're using a mouse, you can also hover over a piece to see how it will affect
         your stats before selecting it.</p>
-    <p>
-        <strong>Mode: </strong>
+</div>
+<div id="builder" style="display: none;">
+    <div class="nav">
         <span class="mode">
             <button :class="{ selected: mode === 'builder' }" @click="mode = 'builder'">Builder</button><button
                 :class="{ selected: mode === 'explorer' }" @click="mode = 'explorer'">Explorer</button>
@@ -31,182 +32,184 @@
             Share
             <span class="share-msg">Copied to Clipboard</span>
         </button>
-    </p>
-    <div class="panels" v-if="mode === 'builder'">
-        <div class="selections">
-            <section class="characters">
-                <h2>Characters</h2>
-                <button :class="btn_class(c, 'character')" v-for="c in characters"
-                    :title="c.items.join(', ')"
-                    @click="select('character', c)"
-                    @mouseover="select_cmp('character', c)"
-                    @mouseout="unselect_cmp('character')">
-                    <template v-for="item in c.items">
-                        <img :src="img_src('characters', item)" :alt="item" width="90" height="90">
-                    </template>
-                </button>
-            </section>
-            <section class="vehicles">
-                <h2>Vehicles</h2>
-                <button :class="btn_class(v, 'vehicle')" v-for="v in vehicles"
-                    :title="v.items.join(', ')"
-                    @click="select('vehicle', v)"
-                    @mouseover="select_cmp('vehicle', v)"
-                    @mouseout="unselect_cmp('vehicle')">
-                    <template v-for="item in v.items">
-                        <img :src="img_src('vehicles', item)" :alt="item" width="100" height="64">
-                    </template>
-                </button>
-            </section>
-            <div class="secondary">
-                <section class="tires">
-                    <h2>Tires</h2>
-                    <button :class="btn_class(t, 'tire')" v-for="t in tires"
-                        :title="t.items.join(', ')"
-                        @click="select('tire', t)"
-                        @mouseover="select_cmp('tire', t)"
-                        @mouseout="unselect_cmp('tire')">
-                        <template v-for="item in t.items">
-                            <img :src="img_src('tires', item)" :alt="item" width="90" height="90">
+    </div>
+    <section class="content">
+        <div class="panels" v-if="mode === 'builder'">
+            <div class="selections">
+                <section class="characters">
+                    <h2>Characters</h2>
+                    <button :class="btn_class(c, 'character')" v-for="c in characters"
+                        :title="c.items.join(', ')"
+                        @click="select('character', c)"
+                        @mouseover="select_cmp('character', c)"
+                        @mouseout="unselect_cmp('character')">
+                        <template v-for="item in c.items">
+                            <img :src="img_src('characters', item)" :alt="item" width="90" height="90">
                         </template>
                     </button>
                 </section>
-                <section class="gliders">
-                    <h2>Gliders</h2>
-                    <button :class="btn_class(g, 'glider')" v-for="g in gliders"
-                        :title="g.items.join(', ')"
-                        @click="select('glider', g)"
-                        @mouseover="select_cmp('glider', g)"
-                        @mouseout="unselect_cmp('glider')">
-                        <template v-for="item in g.items">
-                            <img :src="img_src('gliders', item)" :alt="item" width="90" height="58">
+                <section class="vehicles">
+                    <h2>Vehicles</h2>
+                    <button :class="btn_class(v, 'vehicle')" v-for="v in vehicles"
+                        :title="v.items.join(', ')"
+                        @click="select('vehicle', v)"
+                        @mouseover="select_cmp('vehicle', v)"
+                        @mouseout="unselect_cmp('vehicle')">
+                        <template v-for="item in v.items">
+                            <img :src="img_src('vehicles', item)" :alt="item" width="100" height="64">
                         </template>
                     </button>
                 </section>
-            </div>
-        </div>
-        <div class="build">
-            <div class="build-nav">
-                <button class="prev" @click="prev_build()"></button>
-                <button class="append" @click="add_build()"><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-                    <g fill-rule="nonzero" stroke="#000" stroke-width="3" fill="none" stroke-linecap="square">
-                        <path d="M2 8h12M8 2v12" />
-                    </g>
-                </svg></button>
-                <button class="next" @click="next_build()"></button>
-            </div>
-            <h2>Build {{ build_i + 1 }}</h2>
-            <stat-bar :value="stat('miniturbo')" :cmp="cmpstat('miniturbo')" label="Miniturbo"></stat-bar>
-            <stat-bar :value="stat('speedGnd')" :cmp="cmpstat('speedGnd')" label="Speed (Ground)"></stat-bar>
-            <stat-bar :value="stat('speedWtr')" :cmp="cmpstat('speedWtr')" label="Speed (Water)"></stat-bar>
-            <stat-bar :value="stat('speedAir')" :cmp="cmpstat('speedAir')" label="Speed (Air)"></stat-bar>
-            <stat-bar :value="stat('speedGty')" :cmp="cmpstat('speedGty')" label="Speed (Hover)"></stat-bar>
-            <stat-bar :value="stat('acceleration')" :cmp="cmpstat('acceleration')" label="Acceleration"></stat-bar>
-            <stat-bar :value="stat('weight')" :cmp="cmpstat('weight')" label="Weight"></stat-bar>
-            <stat-bar :value="stat('handlingGnd')" :cmp="cmpstat('handlingGnd')" label="Handling (Ground)"></stat-bar>
-            <stat-bar :value="stat('handlingWtr')" :cmp="cmpstat('handlingWtr')" label="Handling (Water)"></stat-bar>
-            <stat-bar :value="stat('handlingAir')" :cmp="cmpstat('handlingAir')" label="Handling (Air)"></stat-bar>
-            <stat-bar :value="stat('handlingGty')" :cmp="cmpstat('handlingGty')" label="Handling (Hover)"></stat-bar>
-            <stat-bar :value="stat('grip')" :cmp="cmpstat('grip')" label="Traction"></stat-bar>
-            <stat-bar :value="stat('invincibility')" :cmp="cmpstat('invincibility')" label="invincibility"></stat-bar>
-        </div>
-    </div>
-    <div v-else>
-        <p>Enter your search criteria. All stats are quarter fractions between 0 and 6.
-        <div class="searcher">
-            <div class="inputs">
-                <table>
-                <tr>
-                    <td>Miniturbo</td>
-                    <td><select v-model="crit.miniturbo"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
-                    <td v-if="crit.miniturbo !== 'any'"><input v-model="crit_val.miniturbo" /></td>
-                </tr>
-                <tr>
-                    <td>Speed (Ground)</td>
-                    <td><select v-model="crit.speedGnd"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
-                    <td v-if="crit.speedGnd !== 'any'"><input v-model="crit_val.speedGnd" /></td>
-                </tr>
-                <tr>
-                    <td>Speed (Water)</td>
-                    <td><select v-model="crit.speedWtr"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
-                    <td v-if="crit.speedWtr !== 'any'"><input v-model="crit_val.speedWtr" /></td>
-                </tr>
-                <tr>
-                    <td>Speed (Air)</td>
-                    <td><select v-model="crit.speedAir"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
-                    <td v-if="crit.speedAir !== 'any'"><input v-model="crit_val.speedAir" /></td>
-                </tr>
-                <tr>
-                    <td>Speed (Hover)</td>
-                    <td><select v-model="crit.speedGty"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
-                    <td v-if="crit.speedGty !== 'any'"><input v-model="crit_val.speedGty" /></td>
-                </tr>
-                <tr>
-                    <td>Acceleration</td>
-                    <td><select v-model="crit.acceleration"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
-                    <td v-if="crit.acceleration !== 'any'"><input v-model="crit_val.acceleration" /></td>
-                </tr>
-                <tr>
-                    <td>Weight</td>
-                    <td><select v-model="crit.weight"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
-                    <td v-if="crit.weight !== 'any'"><input v-model="crit_val.weight" /></td>
-                </tr>
-                <tr>
-                    <td>Handling (Ground)</td>
-                    <td><select v-model="crit.handlingGnd"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
-                    <td v-if="crit.handlingGnd !== 'any'"><input v-model="crit_val.handlingGnd" /></td>
-                </tr>
-                <tr>
-                    <td>Handling (Water)</td>
-                    <td><select v-model="crit.handlingWtr"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
-                    <td v-if="crit.handlingWtr !== 'any'"><input v-model="crit_val.handlingWtr" /></td>
-                </tr>
-                <tr>
-                    <td>Handling (Air)</td>
-                    <td><select v-model="crit.handlingAir"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
-                    <td v-if="crit.handlingAir !== 'any'"><input v-model="crit_val.handlingAir" /></td>
-                </tr>
-                <tr>
-                    <td>Handling (Hover)</td>
-                    <td><select v-model="crit.handlingGty"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
-                    <td v-if="crit.handlingGty !== 'any'"><input v-model="crit_val.handlingGty" /></td>
-                </tr>
-                <tr>
-                    <td>Traction</td>
-                    <td><select v-model="crit.grip"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
-                    <td v-if="crit.grip !== 'any'"><input v-model="crit_val.grip" /></td>
-                </tr>
-                <tr>
-                    <td>invincibility</td>
-                    <td><select v-model="crit.invincibility"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
-                    <td v-if="crit.invincibility !== 'any'"><input v-model="crit_val.invincibility" /></td>
-                </tr>
-                </table>
-            </div>
-            <button @click="search()">Search</button>
-        </div>
-        <div class="results">
-            <div class="result" v-for="m in matching">
-                <button @click="select_build(m)">Select</button>
-                <div class="piece">
-                    <img :src="img_src('characters', c)" :alt="c.name" v-for="c in m.character.items" />
-                </div>
-                <div class="piece">
-                    <img :src="img_src('vehicles', v)" :alt="v.name" v-for="v in m.vehicle.items" />
-                </div>
-                <div class="piece">
-                    <img :src="img_src('tires', t)" :alt="t.name" v-for="t in m.tire.items" />
-                </div>
-                <div class="piece">
-                    <img :src="img_src('gliders', g)" :alt="g.name" v-for="g in m.glider.items" />
+                <div class="secondary">
+                    <section class="tires">
+                        <h2>Tires</h2>
+                        <button :class="btn_class(t, 'tire')" v-for="t in tires"
+                            :title="t.items.join(', ')"
+                            @click="select('tire', t)"
+                            @mouseover="select_cmp('tire', t)"
+                            @mouseout="unselect_cmp('tire')">
+                            <template v-for="item in t.items">
+                                <img :src="img_src('tires', item)" :alt="item" width="90" height="90">
+                            </template>
+                        </button>
+                    </section>
+                    <section class="gliders">
+                        <h2>Gliders</h2>
+                        <button :class="btn_class(g, 'glider')" v-for="g in gliders"
+                            :title="g.items.join(', ')"
+                            @click="select('glider', g)"
+                            @mouseover="select_cmp('glider', g)"
+                            @mouseout="unselect_cmp('glider')">
+                            <template v-for="item in g.items">
+                                <img :src="img_src('gliders', item)" :alt="item" width="90" height="58">
+                            </template>
+                        </button>
+                    </section>
                 </div>
             </div>
+            <div class="build">
+                <div class="build-nav">
+                    <button class="prev" @click="prev_build()"></button>
+                    <button class="append" @click="add_build()"><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+                        <g fill-rule="nonzero" stroke="#000" stroke-width="3" fill="none" stroke-linecap="square">
+                            <path d="M2 8h12M8 2v12" />
+                        </g>
+                    </svg></button>
+                    <button class="next" @click="next_build()"></button>
+                </div>
+                <h2>Build {{ build_i + 1 }}</h2>
+                <stat-bar :value="stat('miniturbo')" :cmp="cmpstat('miniturbo')" label="Miniturbo"></stat-bar>
+                <stat-bar :value="stat('speedGnd')" :cmp="cmpstat('speedGnd')" label="Speed (Ground)"></stat-bar>
+                <stat-bar :value="stat('speedWtr')" :cmp="cmpstat('speedWtr')" label="Speed (Water)"></stat-bar>
+                <stat-bar :value="stat('speedAir')" :cmp="cmpstat('speedAir')" label="Speed (Air)"></stat-bar>
+                <stat-bar :value="stat('speedGty')" :cmp="cmpstat('speedGty')" label="Speed (Hover)"></stat-bar>
+                <stat-bar :value="stat('acceleration')" :cmp="cmpstat('acceleration')" label="Acceleration"></stat-bar>
+                <stat-bar :value="stat('weight')" :cmp="cmpstat('weight')" label="Weight"></stat-bar>
+                <stat-bar :value="stat('handlingGnd')" :cmp="cmpstat('handlingGnd')" label="Handling (Ground)"></stat-bar>
+                <stat-bar :value="stat('handlingWtr')" :cmp="cmpstat('handlingWtr')" label="Handling (Water)"></stat-bar>
+                <stat-bar :value="stat('handlingAir')" :cmp="cmpstat('handlingAir')" label="Handling (Air)"></stat-bar>
+                <stat-bar :value="stat('handlingGty')" :cmp="cmpstat('handlingGty')" label="Handling (Hover)"></stat-bar>
+                <stat-bar :value="stat('grip')" :cmp="cmpstat('grip')" label="Traction"></stat-bar>
+                <stat-bar :value="stat('invincibility')" :cmp="cmpstat('invincibility')" label="invincibility"></stat-bar>
+            </div>
         </div>
-    </div>
+        <div v-else>
+            <p>Enter your search criteria. All stats are quarter fractions between 0 and 6.
+            <div class="searcher">
+                <div class="inputs">
+                    <table>
+                    <tr>
+                        <td>Miniturbo</td>
+                        <td><select v-model="crit.miniturbo"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
+                        <td v-if="crit.miniturbo !== 'any'"><input v-model="crit_val.miniturbo" /></td>
+                    </tr>
+                    <tr>
+                        <td>Speed (Ground)</td>
+                        <td><select v-model="crit.speedGnd"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
+                        <td v-if="crit.speedGnd !== 'any'"><input v-model="crit_val.speedGnd" /></td>
+                    </tr>
+                    <tr>
+                        <td>Speed (Water)</td>
+                        <td><select v-model="crit.speedWtr"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
+                        <td v-if="crit.speedWtr !== 'any'"><input v-model="crit_val.speedWtr" /></td>
+                    </tr>
+                    <tr>
+                        <td>Speed (Air)</td>
+                        <td><select v-model="crit.speedAir"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
+                        <td v-if="crit.speedAir !== 'any'"><input v-model="crit_val.speedAir" /></td>
+                    </tr>
+                    <tr>
+                        <td>Speed (Hover)</td>
+                        <td><select v-model="crit.speedGty"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
+                        <td v-if="crit.speedGty !== 'any'"><input v-model="crit_val.speedGty" /></td>
+                    </tr>
+                    <tr>
+                        <td>Acceleration</td>
+                        <td><select v-model="crit.acceleration"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
+                        <td v-if="crit.acceleration !== 'any'"><input v-model="crit_val.acceleration" /></td>
+                    </tr>
+                    <tr>
+                        <td>Weight</td>
+                        <td><select v-model="crit.weight"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
+                        <td v-if="crit.weight !== 'any'"><input v-model="crit_val.weight" /></td>
+                    </tr>
+                    <tr>
+                        <td>Handling (Ground)</td>
+                        <td><select v-model="crit.handlingGnd"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
+                        <td v-if="crit.handlingGnd !== 'any'"><input v-model="crit_val.handlingGnd" /></td>
+                    </tr>
+                    <tr>
+                        <td>Handling (Water)</td>
+                        <td><select v-model="crit.handlingWtr"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
+                        <td v-if="crit.handlingWtr !== 'any'"><input v-model="crit_val.handlingWtr" /></td>
+                    </tr>
+                    <tr>
+                        <td>Handling (Air)</td>
+                        <td><select v-model="crit.handlingAir"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
+                        <td v-if="crit.handlingAir !== 'any'"><input v-model="crit_val.handlingAir" /></td>
+                    </tr>
+                    <tr>
+                        <td>Handling (Hover)</td>
+                        <td><select v-model="crit.handlingGty"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
+                        <td v-if="crit.handlingGty !== 'any'"><input v-model="crit_val.handlingGty" /></td>
+                    </tr>
+                    <tr>
+                        <td>Traction</td>
+                        <td><select v-model="crit.grip"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
+                        <td v-if="crit.grip !== 'any'"><input v-model="crit_val.grip" /></td>
+                    </tr>
+                    <tr>
+                        <td>invincibility</td>
+                        <td><select v-model="crit.invincibility"><option value="any">Any</option><option value="gt">At Least</option><option value="eq">Exactly</option><option value="lt">No Greater Than</option></select></td>
+                        <td v-if="crit.invincibility !== 'any'"><input v-model="crit_val.invincibility" /></td>
+                    </tr>
+                    </table>
+                </div>
+                <button @click="search()">Search</button>
+            </div>
+            <div class="results">
+                <div class="result" v-for="m in matching">
+                    <button @click="select_build(m)">Select</button>
+                    <div class="piece">
+                        <img :src="img_src('characters', c)" :alt="c.name" v-for="c in m.character.items" />
+                    </div>
+                    <div class="piece">
+                        <img :src="img_src('vehicles', v)" :alt="v.name" v-for="v in m.vehicle.items" />
+                    </div>
+                    <div class="piece">
+                        <img :src="img_src('tires', t)" :alt="t.name" v-for="t in m.tire.items" />
+                    </div>
+                    <div class="piece">
+                        <img :src="img_src('gliders', g)" :alt="g.name" v-for="g in m.glider.items" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
-<article>
+<footer>
     <p>Stats and sprites from <a href="https://mk8dxbuilder.com/">mk8dxbuilder.com</a>. All original sources can be found there.</p>
-</article>
+</footer>
 </main>
 <script src="stat-bar.js?v=4"></script>
 <script src="builder.js?v=4"></script>

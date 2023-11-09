@@ -2,13 +2,16 @@
     --gap: .625em;
     --button_size: 4em;
     --button_margin: .25em;
+    --primary: #edf2f5;
+    --secondary: #dee4e8;
+    --selected: #c2d0d9;
 }
 
 @media (max-width: 1499px) { :root { --button_size: 3.5em; } }
 @media (max-width: 1339px) { :root { --button_size: 3em; } }
 @media (max-width: 1199px) { :root { --button_size: 3.5em; } }
 @media (max-width: 999px) { :root { --button_size: 3em; } }
-@media (max-width: 767px) { :root { --button_size: 2.625em; } }
+@media (max-width: 767px) { :root { --button_size: 2.5em; } }
 
 @font-face {
     font-family: 'Source Sans Pro';
@@ -19,17 +22,22 @@ body {
     box-sizing: border-box;
     font-family: 'Source Sans Pro', 'Arial', sans-serif;
     line-height: 1.5;
-    font-size: 16px
+    font-size: 16px;
+    margin: 0;
+    background-color: var(--primary);
 }
 
 body * {
     box-sizing: inherit;
 }
 
+footer {
+    padding: 1em;
+}
+
 h1 {
     font-size: 1.75em;
     margin: .5em 0;
-    text-align: center;
 }
 
 h2 {
@@ -37,8 +45,23 @@ h2 {
     margin: .5em 0 .125em;
 }
 
+/* INTRO */
+
+.intro {
+    padding: 1em;
+}
+
 
 /* LAYOUT */
+
+.content {
+    padding: 1em;
+    background-color: var(--secondary);
+}
+
+.nav {
+    padding: 0 1em;
+}
 
 .panels {
     display: flex;
@@ -57,7 +80,7 @@ h2 {
 
 .build {
     flex: 1;
-    padding: 0 10px;
+    padding: 0 0 0 10px;
     position: sticky;
     top: 0;
 }
@@ -102,7 +125,7 @@ button {
     font-size: inherit;
     border: 1px solid #848484;
     border-radius: .625em;
-    background: #e4eaea;
+    background: var(--primary);
     margin: .25em;
     padding: .25em .5em;
 }
@@ -113,7 +136,7 @@ button {
     height: var(--button_size);
 }
 .btn.selected {
-    background-color: #b8eeb9;
+    background-color: var(--selected);
 }
 
 .btn-1 { width: var(--button_size); }
@@ -255,21 +278,30 @@ button {
 /* MODE */
 
 .mode button {
+    padding: .5em .75em;
+    border-color: #ccc;
+    background-color: transparent;
+}
+.mode button {
     margin: 0;
 }
 
 .mode button.selected {
-    background-color: #b8eeb9;
+    background-color: var(--secondary);
 }
 
 .mode button:first-child {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom: 0;
 }
 
 .mode button:last-child {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: 0;
     border-left: 0;
 }
 
